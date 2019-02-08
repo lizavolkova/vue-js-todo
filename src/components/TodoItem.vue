@@ -1,0 +1,42 @@
+<template>
+    <li>
+        {{todo.title}} {{todo.done}}
+        <button v-on:click="showForm">edit?</button>
+        <div v-show="isEditing">EDITING:
+            <button v-on:click="hideForm">cancel</button>
+        </div>
+
+        <span v-on:click="deleteTodo(todo)">X</span>
+        <span v-on:click="completeTodo(todo)">done</span>
+    </li>
+</template>
+
+<script type="text/javascript">
+    export default {
+        props: ['todo'],
+
+        data() {
+            return {
+                isEditing: false
+            }
+        },
+
+        methods: {
+            showForm() {
+                this.isEditing = true
+            },
+
+            hideForm() {
+                this.isEditing = false
+            },
+
+            deleteTodo(todo) {
+                this.$emit('delete-todo', todo);
+            },
+
+            completeTodo(todo) {
+                this.$emit('complete-todo', todo);
+            }
+        }
+    };
+</script>
