@@ -8,22 +8,12 @@ export default new Vuex.Store({
       todos: [{
           id: 0,
           title: 'Todo A',
-          date: '123',
+          date: new Date('February 2, 2019 12:00'),
           done: false,
       }, {
           id: 1,
-          title: 'Todo B',
-          date: '456',
-          done: false,
-      }, {
-          id: 2,
-          title: 'Todo C',
-          date: '789',
-          done: false,
-      }, {
-          id: 3,
-          title: 'Todo D',
-          date: '101112',
+          title: 'Celebrate Valentines Day',
+          date: new Date('February 14, 2019 12:00'),
           done: false,
       }],
 

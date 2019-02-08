@@ -1,6 +1,7 @@
 <template>
     <li>
-        {{todo.title}} {{todo.done}}
+        {{todo.title}} {{todo.done}}<br>
+        {{todo.date}}
         <button v-on:click="showForm">edit?</button>
         <div v-show="isEditing">EDITING:
             <label for="title">new title:</label>
