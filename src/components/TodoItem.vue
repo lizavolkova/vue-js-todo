@@ -3,6 +3,9 @@
         {{todo.title}} {{todo.done}}
         <button v-on:click="showForm">edit?</button>
         <div v-show="isEditing">EDITING:
+            <label for="title">new title:</label>
+            <input id="title" type="text" v-model="todo.title">
+            <button v-on:click="saveToDo">Save</button>
             <button v-on:click="hideForm">cancel</button>
         </div>
 
@@ -36,6 +39,11 @@
 
             completeTodo(todo) {
                 this.$emit('complete-todo', todo);
+            },
+
+            saveToDo() {
+                const { todo } = this;
+                this.$emit('save-todo', todo, todo.title);
             }
         }
     };

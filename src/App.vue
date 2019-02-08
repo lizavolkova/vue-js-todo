@@ -6,16 +6,19 @@
       <router-link to="/daily">Daily</router-link>
     </div>
     <router-view/>
+    <CreateTodo />
   </div>
 </template>
 
 <script>
     import Header from './components/Header.vue'
+    import CreateTodo from './components/CreateTodo.vue'
 
     export default {
         name: 'app',
         components: {
-            Header
+            Header,
+            CreateTodo
         }
     }
 </script>

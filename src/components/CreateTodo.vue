@@ -37,11 +37,11 @@
 
             addTodo() {
                 const title = this.titleText;
-
-                this.$emit('add-todo', {
+                const todoToAdd = {
                     title,
                     done: false
-                })
+                }
+                this.$store.dispatch('addTodo', todoToAdd);
             }
         }
     }

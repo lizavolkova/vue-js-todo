@@ -1,50 +1,29 @@
 <template>
   <div class="home">
     [Monthly view]
-    <CreateTodo v-on:add-todo="addToDo"/>
+    [CALENDAR]
     <TodoList v-bind:todos="todos"/>
   </div>
 </template>
 
 <script>
   import TodoList from '../components/TodoList.vue'
-  import CreateTodo from '../components/CreateTodo.vue'
 
 export default {
   name: 'monthly',
 
-    data() {
-      return {
-          todos: [{
-              title: 'Todo A',
-              done: false,
-          }, {
-              title: 'Todo B',
-              done: false,
-          }, {
-              title: 'Todo C',
-              done: false,
-          }, {
-              title: 'Todo D',
-              done: false,
-          }]
-      }
+    methods: {
+
     },
 
-    methods: {
-        addToDo(todo) {
-            this.todos.push({
-                title: todo.title,
-                done: false
-            });
-
-            console.log(this.todos);
-        }
+    computed: {
+        todos() {
+            return this.$store.state.todos
+        },
     },
 
     components: {
-        TodoList,
-        CreateTodo
+        TodoList
     }
 }
 </script>

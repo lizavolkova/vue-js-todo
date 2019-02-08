@@ -3,10 +3,12 @@
         <ul>
             <TodoItem
                     v-for="(todo, index) in todos"
+                    v-bind:key="index"
                     v-bind:todo="todo"
                     v-bind:index="index"
                     v-on:delete-todo="deleteTodo"
-                    v-on:complete-todo="completeTodo"/>
+                    v-on:complete-todo="completeTodo"
+                    v-on:save-todo="saveTodo" />
         </ul>
     </div>
 </template>
@@ -20,13 +22,16 @@ import TodoItem from './TodoItem';
 
         methods: {
             deleteTodo(todo) {
-                const todoIndex = this.todos.indexOf(todo);
-                this.todos.splice(todoIndex, 1);
+                this.$store.dispatch('deleteTodo', todo);
             },
 
             completeTodo(todo) {
-                const todoIndex = this.todos.indexOf(todo);
-                this.todos[todoIndex].done = true;
+                this.$store.dispatch('toggleTodo', todo);
+            },
+
+            saveTodo(todo, value) {
+                console.log(todo, value)
+
             }
         },
 
