@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <v-calendar :attributes='attrs'></v-calendar>
+    <v-calendar :attributes='attributes' :theme-styles='themeStyles'>
+    </v-calendar>
     <TodoList v-bind:todos="todos"/>
   </div>
 </template>
@@ -13,17 +14,12 @@ export default {
   name: 'monthly',
     data() {
         return {
-            attrs: [
-                {
-                    key: 'today',
-                    highlight: {
-                        backgroundColor: '#ff8080',
-                        // Other properties are available too, like `height` & `borderRadius`
-                    },
-                    dot: { backgroundColor: 'red' },
-                    dates: new Date(2018, 0, 1)
+            themeStyles: {
+                wrapper: {
+                    background: 'linear-gradient(to bottom right, #ff5050, #ff66b3)',
+                    color: '#fafafa'
                 }
-            ],
+            }
         }
     },
 
@@ -35,6 +31,26 @@ export default {
         todos() {
             return this.$store.state.todos
         },
+
+        attributes() {
+            const completeTodos = this.$store.state.todos.filter(t => t.done).map(t => t.date);
+            const pendingTodos = this.$store.state.todos.filter(t => !t.done).map(t => t.date);
+
+            return [
+                {
+                    dot: {
+                        backgroundColor: '#ff4d4d', // Red dot
+                    },
+                    dates: completeTodos
+                },
+                {
+                    dot: {
+                        backgroundColor: '#398fac', // Turquoise dot
+                    },
+                    dates: pendingTodos
+                },
+            ]
+        }
     },
 
     components: {

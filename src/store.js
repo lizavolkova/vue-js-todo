@@ -14,8 +14,15 @@ export default new Vuex.Store({
           id: 1,
           title: 'Celebrate Valentines Day',
           date: new Date('February 14, 2019 12:00'),
-          done: false,
-      }],
+          done: true,
+      },
+      {
+          id: 2,
+          title: 'Pay Day!',
+          date: new Date('February 22, 2019 12:00'),
+          done: false
+      }
+    ],
 
   },
 
