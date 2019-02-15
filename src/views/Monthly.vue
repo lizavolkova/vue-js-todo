@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <vc-calendar :attributes='attributes' :theme-styles='themeStyles'></vc-calendar>
+    <vc-calendar :attributes='attributes' :theme-styles='themeStyles' @dayclick='dayClicked'></vc-calendar>
     <h2>This Month</h2>
     <TodoList v-bind:todos="todos"/>
   </div>
@@ -9,6 +9,7 @@
 <script>
   import TodoList from '../components/TodoList.vue';
   import 'v-calendar/lib/v-calendar.min.css';
+  import router from '../router'
 
 export default {
   name: 'monthly',
@@ -24,7 +25,10 @@ export default {
     },
 
     methods: {
-
+        dayClicked(day) {
+            this.$store.dispatch('setDate', day.dateTime);
+            router.push({ name: "daily" });
+        }
     },
 
     computed: {

@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+      currentDate: new Date(),
       todos: [{
           id: 0,
           title: 'Todo A',
@@ -39,6 +40,10 @@ export default new Vuex.Store({
           todo.title = title;
           todo.date = date;
           todo.done = done;
+      },
+
+      setDate(state, day) {
+          state.currentDate = day;
       }
   },
 
@@ -61,5 +66,9 @@ export default new Vuex.Store({
       editTodo ({ commit }, todo) {
           commit('editTodo', { todo, title: todo.title })
       },
+
+      setDate({ commit }, day) {
+          commit('setDate', day)
+      }
   }
 })
