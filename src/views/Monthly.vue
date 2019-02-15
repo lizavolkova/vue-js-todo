@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <v-calendar :attributes='attributes' :theme-styles='themeStyles'>
-    </v-calendar>
+    <vc-calendar :attributes='attributes' :theme-styles='themeStyles'></vc-calendar>
+    <h2>This Month</h2>
     <TodoList v-bind:todos="todos"/>
   </div>
 </template>

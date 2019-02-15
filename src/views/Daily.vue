@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    [Daily view]
+    <h2>Date</h2>
     <TodoList v-bind:todos="todos"/>
   </div>
 </template>

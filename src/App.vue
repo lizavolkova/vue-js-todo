@@ -1,23 +1,39 @@
 <template>
-  <div id="app">
-    <Header />
-    <div id="nav">
-      <router-link to="/">Monthly</router-link> |
-      <router-link to="/daily">Daily</router-link>
-    </div>
-    <router-view/>
-    <CreateTodo />
-  </div>
+  <v-app>
+    <v-toolbar app>
+      <v-toolbar-title class="headline text-uppercase">
+        <span>TTD</span>
+
+        <span class="font-weight-light">MATERIAL DESIGN</span>
+      </v-toolbar-title>
+    </v-toolbar>
+
+    <v-content>
+      <div id="app">
+
+        <div id="nav">
+          <router-link to="/">
+            <v-btn round color="primary" dark>Monthly</v-btn>
+          </router-link> |
+          <router-link to="/daily">
+            <v-btn round color="primary" dark>Daily</v-btn>
+          </router-link>
+        </div>
+        <router-view/>
+        <CreateTodo />
+      </div>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-    import Header from './components/Header.vue'
+    //import Header from './components/Header.vue'
     import CreateTodo from './components/CreateTodo.vue'
 
     export default {
         name: 'app',
         components: {
-            Header,
+            //Header,
             CreateTodo
         }
     }
@@ -37,7 +53,7 @@
     font-weight: bold;
     color: #2c3e50;
     &.router-link-exact-active {
-      color: #42b983;
+      color: pink;
     }
   }
 }

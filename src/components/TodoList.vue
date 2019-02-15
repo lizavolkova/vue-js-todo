@@ -1,6 +1,9 @@
 <template>
     <div>
-        <ul>
+        <v-list
+                subheader
+                two-line
+        >
             <TodoItem
                     v-for="(todo, index) in todos"
                     v-bind:key="index"
@@ -9,7 +12,7 @@
                     v-on:delete-todo="deleteTodo"
                     v-on:complete-todo="completeTodo"
                     v-on:save-todo="saveTodo" />
-        </ul>
+        </v-list>
     </div>
 </template>
 
