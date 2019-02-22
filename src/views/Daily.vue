@@ -19,7 +19,7 @@
         computed: {
             todos() {
                 const currentDate = this.$store.state.currentDate;
-                return this.$store.state.todos.filter(t => t.date === currentDate);
+                return this.$store.state.todos.filter(t => moment(t.date).format('YYYY-MM-DD') === moment(currentDate).format('YYYY-MM-DD'));
             },
 
             currentDate() {

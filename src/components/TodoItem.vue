@@ -1,12 +1,12 @@
 <template>
-    <v-list-tile @click="completeTodo">
+    <v-list-tile @click.stop="completeTodo">
         <v-list-tile-action>
             <v-checkbox v-model="todo.done"></v-checkbox>
         </v-list-tile-action>
 
-        <v-list-tile-content @click="completeTodo">
+        <v-list-tile-content @click.stop="completeTodo">
             <v-list-tile-title>{{todo.title}}</v-list-tile-title>
-            <v-list-tile-sub-title>{{todo.date}}</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{formatedDate}}</v-list-tile-sub-title>
         </v-list-tile-content>
     </v-list-tile>
 
@@ -27,6 +27,8 @@
 </template>
 
 <script type="text/javascript">
+    import * as moment from 'moment';
+
     export default {
         props: ['todo'],
 
@@ -49,13 +51,19 @@
                 this.$emit('delete-todo', todo);
             },
 
-            completeTodo(todo) {
-                this.$emit('complete-todo', todo);
+            completeTodo() {
+                this.$emit('complete-todo', this.todo);
             },
 
             saveToDo() {
                 const { todo } = this;
                 this.$emit('save-todo', todo, todo.title);
+            }
+        },
+
+        computed: {
+            formatedDate() {
+                return moment(this.todo.date).format("dddd, MMMM Do")
             }
         }
     };

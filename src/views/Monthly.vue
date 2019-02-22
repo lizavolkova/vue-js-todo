@@ -37,7 +37,7 @@ export default {
         },
 
         attributes() {
-            const completeTodos = this.$store.state.todos.filter(t => t.done).map(t => t.date);
+            con  st completeTodos = this.$store.state.todos.filter(t => t.done).map(t => t.date);
             const pendingTodos = this.$store.state.todos.filter(t => !t.done).map(t => t.date);
 
             return [
